@@ -1,0 +1,55 @@
+<div style="
+    background-color: #F0FFF0;
+    padding: 20px;
+    border-radius: 15px;
+    width: 375px;
+    min-height: 500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+">
+    <h1 style="color: #32CD32; text-align: center; font-size: 24px;">🥑 香蕉牛油果奶昔 🍌</h1>
+    <h2 style="color: #228B22; text-align: center; font-size: 20px;">营养满分早餐 (7+月)</h2>
+    
+    <div style="background-color: #FFFFFF; padding: 15px; border-radius: 10px; margin-top: 15px;">
+        <h3 style="color: #32CD32;">食材清单 🧾</h3>
+        <ul style="color: #696969;">
+            <li>🍌 熟香蕉 1/2根（约60g）</li>
+            <li>🥑 熟牛油果 1/4个（约30g）</li>
+            <li>🥛 温热配方奶 100ml</li>
+        </ul>
+        
+        <h3 style="color: #32CD32;">营养价值 🌟</h3>
+        <div style="background-color: #F0FFF0; padding: 10px; border-radius: 8px;">
+            <p style="color: #696969; margin: 5px 0;">🍌 香蕉：钾、维生素B6、膳食纤维</p>
+            <p style="color: #696969; margin: 5px 0;">🥑 牛油果：好脂肪、维生素E、叶酸</p>
+            <p style="color: #696969; margin: 5px 0;">🥛 配方奶：蛋白质、钙、维生素D</p>
+        </div>
+    </div>
+</div>
+<button onclick="downloadCard('card1')" style="
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+">
+    📥 保存图片
+</button>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+function downloadCard(cardId) {
+    const card = document.querySelector(`div`);
+    html2canvas(card).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `辅食教程-卡片1.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+</script> 
