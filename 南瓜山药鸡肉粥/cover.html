@@ -1,0 +1,321 @@
+<div style="
+    background-color: #FFF3E0;
+    padding: 20px;
+    border-radius: 15px;
+    width: 375px;
+    min-height: 500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+">
+    <!-- 标题区域 -->
+    <div style="
+        background-color: rgba(255,255,255,0.9);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    ">
+        <h1 style="
+            color: #FF8C00;
+            font-size: 24px;
+            margin: 0;
+        ">宝宝辅食 | 南瓜山药鸡肉粥</h1>
+        <p style="
+            color: #696969;
+            margin: 10px 0 0 0;
+            font-size: 16px;
+        ">一锅煮 · <i style="color:#FF8C00; font-size: 20px; font-weight: bold;">15</i> 分钟 · 营养均衡主食</p>
+    </div>
+
+    <!-- 食材展示区 -->
+    <div style="
+        display: flex;
+        justify-content: space-around;
+        margin: 20px 0;
+    ">
+        <div style="text-align: center;">
+            <div style="
+                width: 80px;
+                height: 80px;
+                background-color: #FFB74D;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                font-size: 40px;
+            ">
+                 🎃
+            </div>
+            <p style="color: #696969; margin: 5px 0;">南瓜</p>
+        </div>
+        <div style="text-align: center;">
+            <div style="
+                width: 80px;
+                height: 80px;
+                background-color: #FFECB3;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                font-size: 40px;
+            ">
+                <canvas id="yamIcon" width="60" height="60"></canvas>
+            </div>
+            <p style="color: #696969; margin: 5px 0;">山药</p>
+        </div>
+        <div style="text-align: center;">
+            <div style="
+                width: 80px;
+                height: 80px;
+                background-color: #FFE0B2;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                font-size: 40px;
+            ">🍗</div>
+            <p style="color: #696969; margin: 5px 0;">鸡肉</p>
+        </div>
+    </div>
+
+    <!-- 成品展示区 -->
+    <div style="
+        background-color: #FFF;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 20px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    ">
+        <div style="
+            width: 200px;
+            background-color: #FFF8E1;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+        ">🥣</div>
+        <p style="
+            color: #FF8C00;
+            margin: 10px 0;
+            font-size: 18px;
+        ">软糯可口 · 营养丰富 · 好消化</p>
+    </div>
+
+    <!-- 右下角标签 -->
+    <div style="
+        position: absolute;
+        bottom: 92px;
+        right: 10px;
+        background-color: #FF8C00;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+    ">
+        一锅煮主食
+    </div>
+</div>
+
+<button onclick="downloadCard('cover')" style="
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+">
+    📥 保存封面
+</button>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+function downloadCard(cardId) {
+    const card = document.querySelector(`div`);
+    html2canvas(card).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `南瓜山药鸡肉粥-封面.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+
+// 绘制山药图标
+const canvas = document.getElementById('yamIcon');
+const ctx = canvas.getContext('2d');
+
+// 清除画布
+ctx.clearRect(0, 0, 60, 60);
+
+// 设置旋转角度（15度）
+ctx.translate(30, 30);
+ctx.rotate(15 * Math.PI / 180);
+ctx.translate(-30, -30);
+
+// 设置图标颜色
+ctx.fillStyle = '#FFFFFF';
+
+// 绘制山药主体（细长圆柱）
+ctx.beginPath();
+ctx.ellipse(30, 20, 6, 4, 0, 0, 2 * Math.PI); // 左端椭圆
+ctx.fill();
+
+// 绘制山药侧面
+ctx.beginPath();
+ctx.moveTo(24, 20);
+ctx.lineTo(24, 40);
+ctx.bezierCurveTo(24, 44, 36, 44, 36, 40);
+ctx.lineTo(36, 20);
+ctx.fill();
+
+// 绘制山药右端椭圆
+ctx.beginPath();
+ctx.ellipse(30, 40, 6, 4, 0, 0, 2 * Math.PI);
+ctx.fill();
+
+// 添加褐色斑点
+ctx.fillStyle = '#DEB887';
+for(let i = 0; i < 8; i++) {
+    const x = 26 + Math.random() * 8;
+    const y = 22 + Math.random() * 16;
+    ctx.beginPath();
+    ctx.arc(x, y, 0.8, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
+// 添加纹路和细节
+ctx.strokeStyle = '#8B4513';
+ctx.lineWidth = 1;
+
+// 轮廓线条
+ctx.beginPath();
+ctx.ellipse(30, 20, 6, 4, 0, 0, 2 * Math.PI);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(24, 20);
+ctx.lineTo(24, 40);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(36, 20);
+ctx.lineTo(36, 40);
+ctx.stroke();
+
+// 添加高光效果
+ctx.strokeStyle = '#FFFFFF';
+ctx.globalAlpha = 0.3;
+ctx.beginPath();
+ctx.moveTo(27, 20);
+ctx.bezierCurveTo(28, 25, 28, 35, 27, 40);
+ctx.stroke();
+
+// 重置透明度
+ctx.globalAlpha = 1.0;
+
+// 重置变换
+ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+// 绘制南瓜图标
+const pumpkinCanvas = document.getElementById('pumpkinIcon');
+const pCtx = pumpkinCanvas.getContext('2d');
+
+// 清除画布
+pCtx.clearRect(0, 0, 60, 60);
+
+// 设置阴影
+pCtx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+pCtx.shadowBlur = 4;
+pCtx.shadowOffsetY = 2;
+
+// 南瓜主体颜色
+pCtx.fillStyle = '#FFA500';
+
+// 绘制南瓜主体（扁圆形）
+pCtx.beginPath();
+pCtx.ellipse(30, 35, 22, 18, 0, 0, 2 * Math.PI);
+pCtx.fill();
+
+// 重置阴影
+pCtx.shadowColor = 'transparent';
+
+// 绘制南瓜瓣
+pCtx.strokeStyle = '#E67300';
+pCtx.lineWidth = 2;
+
+// 绘制南瓜瓣纹理
+const segments = 7; // 南瓜瓣数量
+for(let i = 0; i < segments; i++) {
+    const angle = (i / segments) * Math.PI * 2;
+    const startX = 30 + Math.cos(angle) * 22;
+    const startY = 35 + Math.sin(angle) * 18;
+    
+    pCtx.beginPath();
+    // 从底部开始绘制曲线
+    pCtx.moveTo(startX, startY);
+    
+    // 使用三次贝塞尔曲线创建收拢的弧度
+    const controlPoint1X = 30 + Math.cos(angle) * 15;
+    const controlPoint1Y = 25 + Math.sin(angle) * 12;
+    const controlPoint2X = 30 + Math.cos(angle) * 8;
+    const controlPoint2Y = 20 + Math.sin(angle) * 6;
+    
+    pCtx.bezierCurveTo(
+        controlPoint1X, controlPoint1Y,
+        controlPoint2X, controlPoint2Y,
+        30, 17  // 所有曲线在顶部收拢到这个点
+    );
+    pCtx.stroke();
+}
+
+// 绘制南瓜蒂
+pCtx.fillStyle = '#1B4D3E';  // 更深的墨绿色
+pCtx.beginPath();
+// 绘制蒂的主体
+pCtx.moveTo(26, 17);
+pCtx.bezierCurveTo(26, 12, 34, 12, 34, 17);
+pCtx.bezierCurveTo(34, 20, 26, 20, 26, 17);
+pCtx.closePath();
+pCtx.fill();
+
+// 给蒂添加纹理
+pCtx.strokeStyle = '#0B2B1A';
+pCtx.lineWidth = 1;
+pCtx.beginPath();
+pCtx.moveTo(28, 14);
+pCtx.lineTo(32, 14);
+pCtx.stroke();
+
+// 添加高光
+pCtx.strokeStyle = '#FFD700';
+pCtx.lineWidth = 2;
+pCtx.globalAlpha = 0.3;
+pCtx.beginPath();
+// 在左上方添加弧形高光
+pCtx.moveTo(15, 30);
+pCtx.quadraticCurveTo(30, 25, 45, 30);
+pCtx.stroke();
+
+// 重置透明度
+pCtx.globalAlpha = 1.0;
+
+// 添加阴影效果
+pCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+pCtx.beginPath();
+pCtx.ellipse(30, 53, 20, 4, 0, 0, 2 * Math.PI);
+pCtx.fill();
+</script>

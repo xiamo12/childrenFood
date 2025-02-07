@@ -1,0 +1,70 @@
+<div style="
+    background-color: #FFF3E0;
+    padding: 20px;
+    border-radius: 15px;
+    width: 375px;
+    min-height: 500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+">
+    <h2 style="color: #FF8C00; text-align: center; font-size: 20px;">制作步骤 👩‍🍳</h2>
+    
+    <div style="background-color: #FFFFFF; padding: 15px; border-radius: 10px; margin-top: 15px;">
+        <h3 style="color: #FF8C00;">食材处理 ⚡️</h3>
+        <ol style="color: #696969;">
+            <li style="margin-bottom: 10px;">
+                <strong style="color: #FF8C00;">准备工作：</strong><br>
+                - 大米提前浸泡30分钟<br>
+                - 南瓜去皮切小块<br>
+                - 山药去皮切小块（戴手套）<br>
+                - 鸡肉切碎
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong style="color: #FF8C00;">煮粥步骤：</strong><br>
+                - 把250ml水倒入小奶锅<br>
+                - 放入浸泡好的米和鸡肉<br>
+                - 大火煮沸后转小火<br>
+                - 5分钟后加入南瓜和山药<br>
+                - 继续小火煮10分钟<br/>
+                - 食材都熟透以后，关火焖5分钟
+            </li>
+        </ol>
+
+        <div style="background-color: #FFF3E0; padding: 10px; border-radius: 8px; margin-top: 10px;">
+            <p style="color: #F4511E; font-size: 14px;">
+                💡 小贴士：<br>
+                1. 山药容易氧化，切好立即下锅<br>
+                2. 火候要小，避免糊底<br>
+                3. 最后几分钟多搅拌
+            </p>
+        </div>
+    </div>
+</div>
+
+<button onclick="downloadCard('card2')" style="
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+">
+    📥 保存步骤卡
+</button>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+function downloadCard(cardId) {
+    const card = document.querySelector(`div`);
+    html2canvas(card).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `南瓜山药鸡肉粥-步骤卡.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+</script>
